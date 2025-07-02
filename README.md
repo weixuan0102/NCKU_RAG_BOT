@@ -1,6 +1,6 @@
 ---
 
-# URL → 向量資料庫 CLI
+# URL → 向量資料庫 CLI (main.py)
 
 ## 這個專案在幹嘛
 
@@ -18,7 +18,7 @@
 
 * Python ≥ 3.9
 * 環境變數：在專案根目錄放 `.env`，至少要有
-
+此為自行架設ollama的api
   ```
   API_ENDPOINT=https://your-llm-endpoint.example.com/v1
   ```
