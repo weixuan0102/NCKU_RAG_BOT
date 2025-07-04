@@ -1,6 +1,6 @@
 ---
 
-# URL → 向量資料庫 CLI
+# URL → 向量資料庫 CLI (main.py)
 
 ## 這個專案在幹嘛
 
@@ -17,11 +17,14 @@
 ## 先備條件
 
 * Python ≥ 3.9
-* 環境變數：在專案根目錄放 `.env`，至少要有
+* 環境變數：在專案根目錄放 `.env`，至少要有:
+
+  此為自行架設ollama的api
 
   ```
   API_ENDPOINT=https://your-llm-endpoint.example.com/v1
   ```
+  👉 若使用的是其他 LLM（如 OpenRouter、OpenAI、Claude），請確保其 API 格式與 OpenAI 相容，否則需手動修改程式中送出 `POST` 的 payload 結構。
 * 安裝依賴
 
   ```bash
