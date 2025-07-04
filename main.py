@@ -10,6 +10,8 @@ The script will automatically:
 * **delete** – remove all child chunks whose metadata `source` matches the
   listed URLs, and clean the parent/child index files.
 
+It *dynamically* loads `parent-child-chunking.py` (note the hyphens) so you
+can keep the original filename you uploaded.  No renaming required.
 """
 
 from __future__ import annotations
@@ -269,7 +271,13 @@ def action_delete(urls: List[str]) -> None:
 
     vectordb.delete(ids=child_ids)
     print(f"已刪 {len(child_ids)} 個 child chunks")
-
+    # ---- 刪除 output 目錄中對應的檔案 -----------------------------------------
+    for url in urls:
+        filename = hashlib.sha256(url.encode("utf-8")).hexdigest() + '.txt'
+        output_file = OUTPUT_DIR / filename
+        if output_file.exists():
+            output_file.unlink()
+            print(f"已刪除檔案: {output_file}")
     # ---- 更新 parent-child map -------------------------------------------------
     with open(PARENT_CHILD_MAP_PATH, "r", encoding="utf-8") as f:
         pc_map = json.load(f)
