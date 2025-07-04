@@ -175,3 +175,16 @@ python parent-child-offline.py
 | **增加長期對話記憶**     | Line Bot 的 `user_conversations` 目前 `maxlen=2`                 | 放大或接 DB 即可                                               |
 | **調檢索數量**        | `get_relevant_context(..., k=10)`                             | 改 `k` 或用相似度分數過濾                                          |
 
+---
+
+# Chatting API
+
+## 架設後臺程式
+```bash
+uvicorn chat_api:app --reload
+```
+
+## 使用方式
+```bash
+curl -X POST http://localhost:8000/chat -H "Content-Type: application/json" -d '{"user_id": "test_user", "message": YOUR_QUESTION}'
+```
