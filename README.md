@@ -1,5 +1,3 @@
----
-
 # URL → Vector Database CLI (main.py)
 
 ## What is this project?
